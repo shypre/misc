@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public float speed;
+
     private Rigidbody rb;
 
-    void start()
+    void Start()
     {
-        rb=GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
     }
 
 	void Update()
@@ -19,10 +21,10 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Verical");
+		float moveVertical = Input.GetAxis("Vertical");
 
-       		Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+       	Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
 
-        rb.AddForce(movement);
+        rb.AddForce(movement * speed);
 	}
 }
