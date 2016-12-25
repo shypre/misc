@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/18 Wheels of Liberty.unity
+  isLoaded: 1
+  isActive: 1
