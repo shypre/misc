@@ -6,8 +6,9 @@ public class Movement : MonoBehaviour
 {
 
 	public Rigidbody rb;
-	public float speed;
-	private float moveX, moveY;
+	public float movespeed, rotatespeed;
+	private float moveX, rotateX;
+	private Vector3 movement, rotation;
 
 	void Start ()
 	{
@@ -16,10 +17,12 @@ public class Movement : MonoBehaviour
 
 	void FixedUpdate ()
 	{
-		moveX = Input.GetAxis ("Horizontal");
-		moveY = Input.GetAxis ("Vertical");
+		moveX = Input.GetAxis ("Vertical");
+		rotateX = Input.GetAxis ("Horizontal");
 
-		Vector3 movement = new Vector3 (moveX, 0, moveY);
-		rb.transform.Translate (movement*speed);
+		movement = new Vector3 (0, 0, moveX);
+		rotation = new Vector3 (0, rotateX, 0);
+		rb.transform.Translate (movement*movespeed);
+		rb.transform.Rotate (rotation*rotatespeed);
 	}
 }
