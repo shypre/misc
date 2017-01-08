@@ -4,25 +4,45 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+	public Rigidbody rbCharacter;
+	public float MoveSpeedMultiplier, RotateSpeedMultiplier;
+	private float Velocity;
+	private float HorizontalAxisValue, VerticalAxisValue;
+    private Vector3 Rotation;
 
-	public Rigidbody rb;
-	public float movespeed, rotatespeed;
-	private float moveX, rotateX;
-	private Vector3 movement, rotation;
-
-	void Start ()
+	void Start()
 	{
-		rb = GetComponent<Rigidbody> ();
+		rbCharacter = GetComponent<Rigidbody>();
 	}
 
-	void FixedUpdate ()
+	void FixedUpdate()
 	{
-		moveX = Input.GetAxis ("Vertical");
-		rotateX = Input.GetAxis ("Horizontal");
+		HorizontalAxisValue = Input.GetAxis("Horizontal");
+		VerticalAxisValue = Input.GetAxis("Vertical");
+        if (Velocity >= 0)
+        {
+            if (VerticalAxisValue > 0)
+            {
+                Velocity += MoveSpeedMultiplier;
+            }
+            else if (VerticalAxisValue < 0)
+            {
+                Velocity -= MoveSpeedMultiplier;
+            }
+        }
+        else if (Velocity < 0)
+        {
+            if (VerticalAxisValue >= 0)
+            {
+                Velocity = 0;
+            }
+            else
+            {
+                Velocity = Velocity * 1.05;
+            }
+        }
+        Rotation = new Vector3(0, 0, HorizontalAxisValue);
+        rbCharacter.transform.Rotate(Rotation);
 
-		movement = new Vector3 (0, 0, moveX);
-		rotation = new Vector3 (0, rotateX, 0);
-		rb.transform.Translate (movement*movespeed);
-		rb.transform.Rotate (rotation*rotatespeed);
 	}
 }
