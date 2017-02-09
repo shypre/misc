@@ -7,9 +7,12 @@ public class Movement : MonoBehaviour
 {
 	public Rigidbody rbCharacter;
 	public float MoveSpeedMultiplier, RotateSpeedMultiplier, VelocityGainMultiplier;
-	private float Velocity;
+	private float Velocity = 50;
+    private float Sqrt2 = Mathf.sqrt(2);
 	private bool isForward, isBack, isLeft, isRight;
-    private Vector3 Rotation, Movement;
+	private Vector3 Rotation, Movement, Offset, Direction;
+    Ray RayCast;
+    RaycastHit HitInfo;
     public Text Speed;
 
 	void Start()
@@ -70,8 +73,15 @@ public class Movement : MonoBehaviour
             Rotation = new Vector3(0, RotateSpeedMultiplier, 0);
             rbCharacter.transform.Rotate (Rotation);
         }
-		Movement = new Vector3 (0, 0, Velocity);
-		rbCharacter.transform.Translate (Movement);
+
+		/* Movement = new Vector3 (0, 0, Velocity);
+		rbCharacter.transform.Translate (Movement); */
+        Offset = transform.position();
+        Direction = transform.eulerAngles();
+		/* RaycastHit hit = new RaycastHit();
+		Ray ray = new Ray (transform.TransformPoint (transform.localPosition + offsetY), transform.TransformPoint (offsetX - offsetY));
+		Physics.Raycast (ray, out hit, Velocity * 5.0f);
+		transform.Translate (hit.point); */
 
         Speed.text = "Speed: " + Velocity.ToString();
 	}

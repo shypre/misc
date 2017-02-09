@@ -19,16 +19,14 @@ Platform assembly: D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\buil
 Loading D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\build x86_64\18 Wheels of Liberty_Data\Managed\UnityEngine.PlaymodeTestsRunner.dll into Unity Child Domain
 Platform assembly: D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\build x86_64\18 Wheels of Liberty_Data\Managed\UnityEngine.Analytics.dll (this message is harmless)
 Loading D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\build x86_64\18 Wheels of Liberty_Data\Managed\UnityEngine.Analytics.dll into Unity Child Domain
-- Completed reload, in  0.021 seconds
+- Completed reload, in  0.022 seconds
 Platform assembly: D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\build x86_64\18 Wheels of Liberty_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: D:\GitHub\misc\18 Wheels of Liberty\18 Wheels of Liberty\build x86_64\18 Wheels of Liberty_Data\Managed\System.dll (this message is harmless)
 desktop: 2560x1080 60Hz; virtual: 4480x1080 at -1920,0
 <RI> Initializing input.
 <RI> Input initialized.
-desktop: 1920x1080 60Hz; virtual: 4480x1080 at -1920,0
-desktop: 2560x1080 60Hz; virtual: 4480x1080 at -1920,0
 <RI> Initialized touch support.
-UnloadTime: 0.707073 ms
+UnloadTime: 0.722787 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 30b4 -> priority: 1 
-  Thread -> id: 3c64 -> priority: 1 
+  Thread -> id: 1d7c -> priority: 1 
+  Thread -> id: 48bc -> priority: 1 
