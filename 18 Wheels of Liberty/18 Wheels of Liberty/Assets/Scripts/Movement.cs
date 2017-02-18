@@ -8,11 +8,11 @@ public class Movement : MonoBehaviour
     //TODO: Turn globals into local variables
 	public Rigidbody rbCharacter;
 	public float MoveSpeedMultiplier, RotateSpeedMultiplier, VelocityGainMultiplier;
-	private float Velocity = 5.0f;
+	private float Velocity = 0.0005f;
     private float Sqrt2 = 1.5f; //Mathf.Sqrt(2.0f);
     private float HalfSqrt2 = 0.75f; //Sqrt2/2.0f;
 	private bool isForward, isBack, isLeft, isRight;
-    private Vector3 Rotation, Movement, Direction, Position, OffsetAngleTop, OffsetAngleBottom;
+    private Vector3 Rotation, Movement, Direction, Position, OffsetAngleTop, OffsetAngleBottom, temp1, temp2;
     Ray RaycastRay;
     RaycastHit HitInfo;
     public Text Speed;
@@ -82,19 +82,19 @@ public class Movement : MonoBehaviour
 		/* Movement = new Vector3 (0, 0, Velocity);
 		rbCharacter.transform.Translate (Movement); */
         Position = transform.position;
-        Direction = transform.eulerAngles;
-        OffsetAngleTop = new Vector3(Velocity * HalfSqrt2, Velocity * HalfSqrt2, 0.0f);
-        OffsetAngleBottom = new Vector3(Velocity * HalfSqrt2, Velocity * HalfSqrt2 * -1.0f, 0.0f);
         if (Velocity != 0.0f)
         {
-            RaycastRay = new Ray(Position, Direction + OffsetAngleBottom);
-            if (Physics.Raycast(RaycastRay, out HitInfo, Velocity * HalfSqrt2))
+            temp1 = Position + new Vector3(0.0f, Velocity, 0.0f);
+            temp2 = new Vector3(1.0f, -HalfSqrt2, 0.0f);
+            Debug.Log("first: " + temp1.ToString("F5"));
+            Debug.Log("second: " + temp2.ToString("F5"));
+            RaycastRay = new Ray(temp1, temp2);
+            Debug.DrawRay(temp1, temp2 * 100, Color.black, 10);
+            if (Physics.Raycast(RaycastRay, out HitInfo, (Velocity * 1.5f) + 1.5f))
             {
-                transform.Translate(HitInfo.point);
-            }
-            else
-            {
-                RaycastRay = new Ray();
+                Debug.Log("HIT");
+                Debug.Log(HitInfo.point.ToString("F5"));
+                transform.position = HitInfo.point + new Vector3(0.0f, Velocity, 0.0f);
             }
 
         }
