@@ -1,7 +1,7 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}"
+# Visual Studio 2008
+
+Project("{CCE32387-AC4F-E2FC-B0D9-D7C06F3A6F1A}") = "18 Wheels of Liberty", "Assembly-CSharp.csproj", "{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +13,9 @@ Global
 		{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
@@ -182,8 +185,5 @@ Global
 		$27.NamingStyle = PascalCase
 		$27.IncludeInstanceMembers = True
 		$27.IncludeStaticEntities = True
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
