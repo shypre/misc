@@ -6,13 +6,17 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour
 {
     //TODO: Turn globals into local variables
+    public LineRenderer lineRenderer;
+    private Vector3[] positions = new Vector3[2];
+
 	public Rigidbody rbCharacter;
 	public float MoveSpeedMultiplier, RotateSpeedMultiplier, VelocityGainMultiplier;
-	private float Velocity = 0.0005f;
+	private float Velocity = 0.05f;
     private float Sqrt2 = 1.5f; //Mathf.Sqrt(2.0f);
     private float HalfSqrt2 = 0.75f; //Sqrt2/2.0f;
 	private bool isForward, isBack, isLeft, isRight;
-    private Vector3 Rotation, Movement, Direction, Position, OffsetAngleTop, OffsetAngleBottom, temp1, temp2;
+    public Vector3 temp1, temp2;
+    private Vector3 Rotation, Movement, Direction, Position, OffsetAngleTop, OffsetAngleBottom;
     Ray RaycastRay;
     RaycastHit HitInfo;
     public Text Speed;
@@ -21,6 +25,7 @@ public class Movement : MonoBehaviour
     //standard Unity function
 	{
 		rbCharacter = GetComponent<Rigidbody>();
+        lineRenderer = GetComponent<LineRenderer>();
 	}
 
 	void FixedUpdate()
@@ -85,16 +90,19 @@ public class Movement : MonoBehaviour
         if (Velocity != 0.0f)
         {
             temp1 = Position + new Vector3(0.0f, Velocity, 0.0f);
-            temp2 = new Vector3(1.0f, -HalfSqrt2, 0.0f);
+            temp2 = Vector3.Normalize(new Vector3(Velocity, -Velocity, 0.0f));
             Debug.Log("first: " + temp1.ToString("F5"));
             Debug.Log("second: " + temp2.ToString("F5"));
             RaycastRay = new Ray(temp1, temp2);
-            Debug.DrawRay(temp1, temp2 * 100, Color.black, 10);
-            if (Physics.Raycast(RaycastRay, out HitInfo, (Velocity * 1.5f) + 1.5f))
+            Debug.DrawRay(temp1, temp2 * Velocity, Color.black, 100);
+            positions[0] = temp1;
+            positions[1] = temp1 + (temp2 * Velocity);
+            lineRenderer.SetPositions(positions);
+            if (Physics.Raycast(RaycastRay, out HitInfo) && HitInfo.transform.tag == "RaycastTarget")
             {
                 Debug.Log("HIT");
                 Debug.Log(HitInfo.point.ToString("F5"));
-                transform.position = HitInfo.point + new Vector3(0.0f, Velocity, 0.0f);
+                transform.position = HitInfo.point;// + new Vector3(0.0f, Velocity, 0.0f);
             }
 
         }
