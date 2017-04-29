@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2008
-
-Project("{CCE32387-AC4F-E2FC-B0D9-D7C06F3A6F1A}") = "18 Wheels of Liberty", "Assembly-CSharp.csproj", "{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "18 Wheels of Liberty", "Assembly-CSharp.csproj", "{BCA05E82-9D1D-EFDE-0D45-973CDDCCA6E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
